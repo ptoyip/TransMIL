@@ -38,9 +38,12 @@ class CamelData(data.Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        slide_id = self.data[idx]
+        slide_id = int(self.data[idx])
+        # print(type(slide_id))
         label = int(self.label[idx])
+        # print('\nnow print the slide id',str(slide_id))
         full_path = Path(self.feature_dir) / f"{slide_id}.pt"
+        # print('now print the full path: ',str(full_path))
         features = torch.load(full_path)
 
         # ----> shuffle

@@ -57,20 +57,29 @@ class TransMIL(nn.Module):
         self._fc2 = nn.Linear(512, self.n_classes)
 
     def forward(self, **kwargs):
-
         h = kwargs["data"].float()  # [B, n, 1024]
-
+        #! for me only
+        # h = h.squeeze(dim=0)
+        # print("\n" + "~" * 100)
+        # print(h.shape)
+        # print(type(h[0][0][0][0].item()))
+        # print("~" * 100)
         h = self._fc1(h)  # [B, n, 512]
-
+        # print("\n" + "~" * 100)
+        # print(h.shape)
+        # print(type(h[0][0][0][0].item()))
+        # print("~" * 100)
         # ---->pad (Squaring of sequence)
         H = h.shape[1]
         _H, _W = int(np.ceil(np.sqrt(H))), int(np.ceil(np.sqrt(H)))
         add_length = _H * _W - H
         h = torch.cat([h, h[:, :add_length, :]], dim=1)  # [B, N, 512]
-
+        # print("line 78", h.shape)
         # ---->cls_token (append one dimention using trainable weight as classification token, h_{i,class})
         B = h.shape[0]
+        # print("B", B)
         cls_tokens = self.cls_token.expand(B, -1, -1).cuda()
+        # print(cls_tokens.shape, h.shape)
         h = torch.cat((cls_tokens, h), dim=1)
 
         # h = H_s

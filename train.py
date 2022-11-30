@@ -11,19 +11,21 @@ from utils.utils import *
 import pytorch_lightning as pl
 from pytorch_lightning import Trainer
 
+import warnings
+
 #--->Setting parameters
 def make_parse():
     parser = argparse.ArgumentParser()
     parser.add_argument('--stage', default='train', type=str)
-    parser.add_argument('--config', default='Camelyon/TransMIL.yaml',type=str)
-    parser.add_argument('--gpus', default = [2])
+    parser.add_argument('--config', default='BCNB/TransMIL.yaml',type=str)
+    parser.add_argument('--gpus', default = [4])
     parser.add_argument('--fold', default = 0)
     args = parser.parse_args()
     return args
 
 #---->main
 def main(cfg):
-
+    warnings.filterwarnings("ignore")
     #---->Initialize seed
     pl.seed_everything(cfg.General.seed)
 
@@ -58,15 +60,19 @@ def main(cfg):
         callbacks=cfg.callbacks,
         max_epochs= cfg.General.epochs,
         gpus=cfg.General.gpus,
-        amp_level=cfg.General.amp_level,  
-        precision=cfg.General.precision,  
+        amp_level=cfg.General.amp_level,
+        precision=cfg.General.precision,
         accumulate_grad_batches=cfg.General.grad_acc,
         deterministic=True,
-        check_val_every_n_epoch=1,
+        check_val_every_n_epoch=2,
+        #* Newly added
+        amp_backend='apex',
+        accelerator='gpu',
     )
 
     #---->train or test
     if cfg.General.server == 'train':
+        print('start training~')
         trainer.fit(model = model, datamodule = dm)
     else:
         model_paths = list(cfg.log_path.glob('*.ckpt'))
