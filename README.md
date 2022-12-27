@@ -18,6 +18,7 @@ dataset_csv/bcnb
 
 BCNB/TransMIL.yaml
 - parameters
+I change the precision of apex to 32, somehow making it 16 will have some problems.(also fp16 = False) I think it's just make the model slower, wont change the result.
 
 Run `nohup python -u train.py --stage='train' --config='BCNB/TransMIL.yaml' --fold=0`, can specified gpus
 
