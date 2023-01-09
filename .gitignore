@@ -1,4 +1,8 @@
 clam_patches
-camelyon16_patches
+camelyon16_normal
+camelyon16_tumor
 pt_files
 __pycache__
+camelyon16_normal_feat
+camelyon16_tumor_feat
+logs
