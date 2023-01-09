@@ -29,7 +29,7 @@ def load_loggers(cfg):
         log_path + str(log_name),
         name=version_name,
         version=f"fold{cfg.Data.fold}",
-        log_graph=True,
+        log_graph=False,
         default_hp_metric=False,
     )
     # ---->CSV
@@ -85,6 +85,7 @@ import torch.nn.functional as F
 
 
 def cross_entropy_torch(x, y):
+    # x_softmax = [F.softmax(x[i]) for i in range(len(x))]
     x_softmax = [F.softmax(x[i]) for i in range(len(x))]
     x_log = torch.tensor([torch.log(x_softmax[i][y[i]]) for i in range(len(y))])
     loss = -torch.sum(x_log) / len(y)

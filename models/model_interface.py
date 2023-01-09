@@ -129,21 +129,24 @@ class ModelInterface(pl.LightningModule):
         self.log(
             "val_loss",
             cross_entropy_torch(logits, target),
-            prog_bar=True,
+            prog_bar=False,
             on_epoch=True,
             logger=True,
+            sync_dist=True,
         )
         self.log(
             "auc",
             self.AUROC(probs, target.squeeze()),
-            prog_bar=True,
+            prog_bar=False,
             on_epoch=True,
             logger=True,
+            sync_dist=True,
         )
         self.log_dict(
             self.valid_metrics(max_probs.squeeze(), target.squeeze()),
             on_epoch=True,
             logger=True,
+            sync_dist=True,
         )
 
         # ---->acc log

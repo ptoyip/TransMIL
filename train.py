@@ -68,6 +68,8 @@ def main(cfg):
         #* Newly added
         amp_backend='apex',
         accelerator='gpu',
+        strategy=cfg.General.multi_gpu_mode,
+        fast_dev_run = False
     )
 
     #---->train or test

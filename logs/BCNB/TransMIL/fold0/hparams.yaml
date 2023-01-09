@@ -8,7 +8,7 @@ data: &id003 !!python/object/new:addict.addict.Dict
     - false
   - !!python/tuple
     - data_dir
-    - pt_files/
+    - clam_patches/pt_files/
   - !!python/tuple
     - label_dir
     - dataset_csv/bcnb/
@@ -47,7 +47,7 @@ data: &id003 !!python/object/new:addict.addict.Dict
         num_workers: 8
       state: *id002
   dictitems:
-    data_dir: pt_files/
+    data_dir: clam_patches/pt_files/
     data_shuffle: false
     dataset_name: camel_data
     fold: '0'

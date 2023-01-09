@@ -38,7 +38,7 @@ class CamelData(data.Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        slide_id = int(self.data[idx])
+        slide_id = self.data[idx]
         # print(type(slide_id))
         label = int(self.label[idx])
         # print('\nnow print the slide id',str(slide_id))
