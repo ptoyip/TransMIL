@@ -5,7 +5,7 @@ General:
     amp_level: O2
     precision: 32
     multi_gpu_mode: dp
-    gpus: [6,7]
+    gpus: [0]
     epochs: &epoch 200
     grad_acc: 20
     frozen_bn: False
@@ -18,7 +18,8 @@ Data:
     data_shuffle: False
     data_dir: clam_patches/pt_files/
     label_dir: dataset_csv/bcnb/
-    fold: 2
+    # fold 1 is truncated dataset for ER
+    fold: 1
     nfold: 4
 
     train_dataloader:
@@ -36,7 +37,7 @@ Model:
 
 Optimizer:
     opt: lookahead_radam
-    lr: 0.0005
+    lr: 0.001
     opt_eps: null 
     opt_betas: null
     momentum: null 

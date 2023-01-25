@@ -38,8 +38,9 @@ class CamelData(data.Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
+        # print(idx, "is the current idx")
         slide_id = self.data[idx]
-        # print(type(slide_id))
+        slide_id = str(int(slide_id))
         label = int(self.label[idx])
         # print('\nnow print the slide id',str(slide_id))
         full_path = Path(self.feature_dir) / f"{slide_id}.pt"

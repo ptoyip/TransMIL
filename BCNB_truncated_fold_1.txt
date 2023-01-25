@@ -1,0 +1,114 @@
+nohup: ignoring input
+Global seed set to 2021
+---->Log dir: logs/BCNB/TransMIL/fold1
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+start training~
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [3,4,5]
+
+  | Name          | Type             | Params
+---------------------------------------------------
+0 | model         | TransMIL         | 2.7 M 
+1 | loss          | CrossEntropyLoss | 0     
+2 | AUROC         | AUROC            | 0     
+3 | valid_metrics | MetricCollection | 0     
+4 | test_metrics  | MetricCollection | 0     
+---------------------------------------------------
+2.7 M     Trainable params
+0         Non-trainable params
+2.7 M     Total params
+10.689    Total estimated model params size (MB)
+Training: 0it [00:00, ?it/s]Training:   0%|          | 0/317 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/317 [00:00<?, ?it/s] 211 is the current idx
+243 is the current idx
+82 is the current idx
+140 is the current idx41
+ is the current idx
+224 is the current idx
+88 is the current idx
+252 is the current idx
+245 is the current idx
+84122 is the current idx
+ is the current idx
+241 is the current idx
+262 is the current idx
+147 is the current idx
+12 is the current idx
+35 is the current idx
+311 is the current idx
+Epoch 0:   0%|          | 1/317 [00:04<23:14,  4.41s/it]Epoch 0:   0%|          | 1/317 [00:04<23:14,  4.41s/it, loss=0.865, v_num=old1]205 is the current idx
+Traceback (most recent call last):
+  File "train.py", line 99, in <module>
+    main(cfg)
+  File "train.py", line 78, in main
+    trainer.fit(model = model, datamodule = dm)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 583, in fit
+    self, self._fit_impl, model, train_dataloaders, val_dataloaders, datamodule, ckpt_path
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/trainer/call.py", line 38, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 624, in _fit_impl
+    self._run(model, ckpt_path=self.ckpt_path)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 1061, in _run
+    results = self._run_stage()
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 1140, in _run_stage
+    self._run_train()
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/trainer/trainer.py", line 1163, in _run_train
+    self.fit_loop.run()
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+    self.advance(*args, **kwargs)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/loops/fit_loop.py", line 267, in advance
+    self._outputs = self.epoch_loop.run(self._data_fetcher)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+    self.advance(*args, **kwargs)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 188, in advance
+    batch = next(data_fetcher)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/utilities/fetching.py", line 184, in __next__
+    return self.fetching_function()
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/utilities/fetching.py", line 265, in fetching_function
+    self._fetch_next_batch(self.dataloader_iter)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/utilities/fetching.py", line 280, in _fetch_next_batch
+    batch = next(iterator)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/trainer/supporters.py", line 568, in __next__
+    return self.request_next_batch(self.loader_iters)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pytorch_lightning/trainer/supporters.py", line 580, in request_next_batch
+    return apply_to_collection(loader_iters, Iterator, next)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/lightning_utilities/core/apply_func.py", line 47, in apply_to_collection
+    return function(data, *args, **kwargs)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/torch/utils/data/dataloader.py", line 681, in __next__
+    data = self._next_data()
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/torch/utils/data/dataloader.py", line 1376, in _next_data
+    return self._process_data(data)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/torch/utils/data/dataloader.py", line 1402, in _process_data
+    data.reraise()
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/torch/_utils.py", line 461, in reraise
+    raise exception
+KeyError: Caught KeyError in DataLoader worker process 1.
+Original Traceback (most recent call last):
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pandas/core/indexes/base.py", line 3361, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 76, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 108, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 2131, in pandas._libs.hashtable.Int64HashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 2140, in pandas._libs.hashtable.Int64HashTable.get_item
+KeyError: 245
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/torch/utils/data/_utils/worker.py", line 302, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/torch/utils/data/_utils/fetch.py", line 49, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/torch/utils/data/_utils/fetch.py", line 49, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/yipkc/code/TransMIL/datasets/camel_data.py", line 42, in __getitem__
+    slide_id = self.data[idx]
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pandas/core/series.py", line 942, in __getitem__
+    return self._get_value(key)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pandas/core/series.py", line 1051, in _get_value
+    loc = self.index.get_loc(label)
+  File "/home/yipkc/anaconda3/envs/BCNB/lib/python3.7/site-packages/pandas/core/indexes/base.py", line 3363, in get_loc
+    raise KeyError(key) from err
+KeyError: 245
+
