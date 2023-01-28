@@ -1,5 +1,5 @@
 General:
-    comment: 
+    comment: N0 vs N+
     seed: 2021
     fp16: False
     amp_level: O2
@@ -15,15 +15,15 @@ General:
 
 Data:
     dataset_name: camel_data
-    data_shuffle: False
+    data_shuffle: True
     data_dir: clam_patches/pt_files/
     label_dir: dataset_csv/bcnb/
-    # fold 1 is truncated dataset for ER
+    # fold 0: normal ER, fold 1: N0 vs N+, fold 2: normal ER, fold 3: real ER
     fold: 1
     nfold: 4
 
     train_dataloader:
-        batch_size: 1 
+        batch_size: 1
         num_workers: 8
 
     test_dataloader:
@@ -36,9 +36,9 @@ Model:
 
 
 Optimizer:
-    opt: lookahead_radam
-    lr: 0.001
-    opt_eps: null 
+    opt: adam
+    lr: 0.002
+    opt_eps: null
     opt_betas: null
     momentum: null 
     weight_decay: 0.00001
