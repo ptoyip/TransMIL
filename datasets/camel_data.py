@@ -43,7 +43,8 @@ class CamelData(data.Dataset):
         slide_id = str(int(slide_id))
         label = int(self.label[idx])
         # print('\nnow print the slide id',str(slide_id))
-        full_path = Path(self.feature_dir) / f"slide{slide_id}.pt"
+        # full_path = Path(self.feature_dir) / f"slide{slide_id}.pt"
+        full_path = Path(self.feature_dir) / f"{slide_id}.pt"
         # print('now print the full path: ',str(full_path))
         features = torch.load(full_path)
 

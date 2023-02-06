@@ -16,7 +16,7 @@ General:
 Data:
     dataset_name: camel_data
     data_shuffle: True
-    data_dir: clam_patches/pt_files/
+    data_dir: clam_patches/pt_files_512/
     label_dir: dataset_csv/bcnb/
     # fold 0: normal ER, fold 1: N0 vs N+, fold 2: normal ER, fold 3: real ER
     fold: 1
@@ -36,7 +36,7 @@ Model:
 
 
 Optimizer:
-    opt: adam
+    opt: lookahead_radam
     lr: 0.002
     opt_eps: null
     opt_betas: null
